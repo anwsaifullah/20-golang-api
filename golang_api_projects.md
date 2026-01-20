@@ -1,0 +1,200 @@
+# 20 Golang API Projects (Pemula → Intermediate)
+
+## Tier 1: Basic (Pure net/http)
+
+### 1. Hello World API
+**Deskripsi:** API paling sederhana, return JSON "hello"
+- Single endpoint GET `/`
+- Return JSON
+- **Skills:** Basic routing, JSON response
+- **Tools:** net/http, encoding/json
+
+### 2. Echo API
+**Deskripsi:** API yang echo kembali apa yang dikirim client
+- Endpoint POST `/echo` - return request body as-is
+- **Skills:** Parse JSON request body, return response
+- **Tools:** net/http, encoding/json
+
+### 3. Calculator API
+**Deskripsi:** API kalkulator sederhana
+- Endpoint GET `/add?a=5&b=3` - return sum
+- Endpoint GET `/multiply?a=5&b=3` - return product
+- **Skills:** Query parameters, multiple endpoints, string conversion
+- **Tools:** net/http, strconv
+
+### 4. Todo List (In-Memory)
+**Deskripsi:** Todo list sederhana tanpa database
+- GET `/todos` - list semua
+- POST `/todos` - add todo (store di slice/map)
+- **Skills:** Multiple methods, in-memory storage, mutable state
+- **Tools:** net/http, encoding/json, sync.Mutex
+
+### 5. User Profile API
+**Deskripsi:** API untuk manage user profile
+- GET `/users/{id}` - get user
+- POST `/users` - create user
+- **Skills:** URL path parameters, struct marshaling, pattern matching
+- **Tools:** net/http, encoding/json
+
+## Tier 2: Pure net/http + External APIs
+
+### 6. Blog API (CRUD)
+**Deskripsi:** Simple blog dengan CRUD posts
+- GET `/posts` - list posts
+- POST `/posts` - create post
+- GET `/posts/:id` - get single post
+- PUT `/posts/:id` - update post
+- DELETE `/posts/:id` - delete post
+- **Skills:** HTTP methods, request routing, in-memory CRUD
+- **Tools:** net/http, encoding/json
+
+### 7. Weather API (External API Call)
+**Deskripsi:** Proxy weather dari API eksternal
+- GET `/weather?city=jakarta` - fetch dari OpenWeatherMap/similar
+- **Skills:** HTTP client, external API integration, error handling
+- **Tools:** net/http, encoding/json, net/http.Client
+
+### 8. URL Shortener
+**Deskripsi:** Shorten long URLs (in-memory)
+- POST `/shorten` - create short URL
+- GET `/:shortcode` - redirect to original
+- **Skills:** URL encoding, redirects, unique ID generation, map
+- **Tools:** net/http, math/rand, encoding
+
+### 9. JWT Auth Basic
+**Deskripsi:** API dengan JWT authentication
+- POST `/login` - return JWT token
+- GET `/protected` - protected endpoint (check token)
+- **Skills:** JWT generation, custom middleware, auth headers
+- **Tools:** net/http, crypto/hmac, encoding/base64, encoding/json
+
+### 10. Rate Limiter Middleware
+**Deskripsi:** API dengan rate limiting
+- Custom middleware untuk limit requests per IP
+- GET `/api/data` - endpoint yang limited
+- **Skills:** Middleware pattern, request counting, time management
+- **Tools:** net/http, time, sync.Map
+
+## Tier 3: Database Integration (SQLite)
+
+### 11. User Management API (SQLite)
+**Deskripsi:** User CRUD dengan SQLite
+- CRUD users (Create, Read, Update, Delete)
+- Store di SQLite
+- **Skills:** SQLite setup, basic SQL queries, database connection pooling
+- **Tools:** net/http, database/sql, github.com/mattn/go-sqlite3
+
+### 12. Product Store API
+**Deskripsi:** E-commerce product management
+- GET `/products` - list dengan pagination
+- POST `/products` - create product
+- PUT `/products/:id` - update stock
+- DELETE `/products/:id` - delete product
+- **Skills:** Pagination with LIMIT/OFFSET, SQL queries, parameter binding
+- **Tools:** net/http, database/sql, encoding/json
+
+### 13. Notes API (SQLite)
+**Deskripsi:** Note taking app backend
+- User can create/read/update/delete notes
+- Each note belongs to user
+- **Skills:** Foreign keys, user authorization, one-to-many relationship
+- **Tools:** net/http, database/sql, encoding/json
+
+### 14. Expense Tracker API
+**Deskripsi:** Track pengeluaran dengan kategori
+- Add expense (date, amount, category, description)
+- Get expenses with filters (by category, date range)
+- Get monthly summary/report
+- **Skills:** Filtering, date queries, aggregation (SUM, COUNT, GROUP BY)
+- **Tools:** net/http, database/sql, time package
+
+### 15. Library Book Management API
+**Deskripsi:** Manage book library dengan member checkout
+- Books, Members, Checkout history
+- Member bisa checkout/return books
+- Track status (available, checked out, overdue)
+- **Skills:** Many-to-many relationship, status management, complex SQL queries
+- **Tools:** net/http, database/sql, time package
+
+## Tier 4: Advanced Features (SQLite)
+
+### 16. Multi-User Blog API
+**Deskripsi:** Blog dengan user authentication
+- User registration/login (hashed password)
+- Each user has posts
+- Only owner can edit/delete
+- Public can view
+- **Skills:** Authentication, authorization, password hashing, user roles
+- **Tools:** net/http, database/sql, crypto/sha256, encoding/hex
+
+### 17. E-Commerce Order API
+**Deskripsi:** Order management system
+- Users browse products
+- Create orders (multiple items)
+- Track order status (pending, shipped, delivered)
+- Order history
+- **Skills:** Transactions, complex relationships, order item junction table
+- **Tools:** net/http, database/sql, tx.Begin()
+
+### 18. File Upload & Metadata API
+**Deskripsi:** API untuk upload files dan store metadata di SQLite
+- POST `/upload` - upload file, store info di database
+- GET `/files` - list all uploaded files
+- GET `/files/:id` - get file metadata and download
+- DELETE `/files/:id` - delete file and record
+- Store file path di SQLite, files di disk
+- **Skills:** Multipart form parsing, file handling, metadata storage
+- **Tools:** net/http, io/ioutil, database/sql, mime/multipart
+
+### 19. Task Management with Comments API
+**Deskripsi:** Project management dengan tasks dan comments
+- Create projects
+- Create tasks in projects
+- Add comments to tasks
+- Assign tasks to users
+- Track task status (todo, in-progress, done)
+- **Skills:** Multiple relationships, nested data handling, complex authorization
+- **Tools:** net/http, database/sql, encoding/json, time
+
+### 20. Complete Social Network API
+**Deskripsi:** Mini Twitter-like API (comprehensive)
+- User registration/login/profile management
+- Create posts/tweets
+- Like/repost/comment on posts
+- Follow/unfollow users
+- User feed (posts from followed users, ordered by time)
+- Search posts by keyword
+- Pagination, sorting, filtering
+- User stats (followers count, posts count)
+- **Skills:** Complex relationships (follow is many-to-many), authorization, performance optimization, multiple JOINs, aggregations
+- **Tools:** net/http, database/sql, encoding/json, time, crypto (for password hashing)
+
+---
+
+## Learning Path Summary
+
+| Tier | Project Range | Focus | Database |
+|------|---|---|---|
+| 1 | 1-5 | Basics, routing, JSON | None (in-memory) |
+| 2 | 6-10 | net/http patterns, auth, external APIs | None (in-memory) |
+| 3 | 11-15 | SQLite fundamentals, CRUD, queries | SQLite |
+| 4 | 16-20 | Advanced SQL, relationships, performance | SQLite |
+
+## Tech Stack (Pure Go Only)
+- **Tier 1-2:** net/http, encoding/json, built-in packages
+- **Tier 3-4:** net/http, database/sql, SQLite driver (mattn/go-sqlite3), built-in packages
+
+## Dependencies
+```
+go get github.com/mattn/go-sqlite3
+```
+(hanya ini aja untuk SQLite driver)
+
+## Tips
+- Jangan lanjut project sebelum master yang sekarang
+- Test setiap endpoint dengan curl atau Postman
+- Commit setiap project ke GitHub
+- Refactor/improve project lama saat belajar yang baru
+- Project 20 = portfolio piece yang impressive
+- Semua built-in Go (net/http, encoding/json, database/sql)
+- Hanya 1 external dependency: go-sqlite3 driver
