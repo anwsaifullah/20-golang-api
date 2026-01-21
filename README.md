@@ -54,14 +54,14 @@
 - **Skills:** HTTP client, external API integration, error handling
 - **Tools:** net/http, encoding/json, net/http.Client
 
-### 8. URL Shortener 🔃
+### 8. URL Shortener ✅
 **Deskripsi:** Shorten long URLs (in-memory)
 - POST `/shorten` - create short URL
 - GET `/:shortcode` - redirect to original
 - **Skills:** URL encoding, redirects, unique ID generation, map
 - **Tools:** net/http, math/rand, encoding
 
-### 9. JWT Auth Basic
+### 9. JWT Auth Basic 🔃
 **Deskripsi:** API dengan JWT authentication
 - POST `/login` - return JWT token
 - GET `/protected` - protected endpoint (check token)
