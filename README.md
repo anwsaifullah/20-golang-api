@@ -2,34 +2,34 @@
 
 ## Tier 1: Basic (Pure net/http)
 
-### 1. Hello World API
+### 1. Hello World API ✅
 **Deskripsi:** API paling sederhana, return JSON "hello"
 - Single endpoint GET `/`
 - Return JSON
 - **Skills:** Basic routing, JSON response
 - **Tools:** net/http, encoding/json
 
-### 2. Echo API
+### 2. Echo API ✅
 **Deskripsi:** API yang echo kembali apa yang dikirim client
 - Endpoint POST `/echo` - return request body as-is
 - **Skills:** Parse JSON request body, return response
 - **Tools:** net/http, encoding/json
 
-### 3. Calculator API
+### 3. Calculator API ✅
 **Deskripsi:** API kalkulator sederhana
 - Endpoint GET `/add?a=5&b=3` - return sum
 - Endpoint GET `/multiply?a=5&b=3` - return product
 - **Skills:** Query parameters, multiple endpoints, string conversion
 - **Tools:** net/http, strconv
 
-### 4. Todo List (In-Memory)
+### 4. Todo List (In-Memory) ⏳
 **Deskripsi:** Todo list sederhana tanpa database
 - GET `/todos` - list semua
 - POST `/todos` - add todo (store di slice/map)
 - **Skills:** Multiple methods, in-memory storage, mutable state
 - **Tools:** net/http, encoding/json, sync.Mutex
 
-### 5. User Profile API
+### 5. User Profile API ✅
 **Deskripsi:** API untuk manage user profile
 - GET `/users/{id}` - get user
 - POST `/users` - create user
@@ -38,7 +38,7 @@
 
 ## Tier 2: Pure net/http + External APIs
 
-### 6. Blog API (CRUD)
+### 6. Blog API (CRUD) ✅
 **Deskripsi:** Simple blog dengan CRUD posts
 - GET `/posts` - list posts
 - POST `/posts` - create post
@@ -48,13 +48,13 @@
 - **Skills:** HTTP methods, request routing, in-memory CRUD
 - **Tools:** net/http, encoding/json
 
-### 7. Weather API (External API Call)
+### 7. Weather API (External API Call) ⏳
 **Deskripsi:** Proxy weather dari API eksternal
 - GET `/weather?city=jakarta` - fetch dari OpenWeatherMap/similar
 - **Skills:** HTTP client, external API integration, error handling
 - **Tools:** net/http, encoding/json, net/http.Client
 
-### 8. URL Shortener
+### 8. URL Shortener 🔃
 **Deskripsi:** Shorten long URLs (in-memory)
 - POST `/shorten` - create short URL
 - GET `/:shortcode` - redirect to original
